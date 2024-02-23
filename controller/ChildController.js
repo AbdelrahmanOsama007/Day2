@@ -1,5 +1,6 @@
 
 const Child = require("../model/ChildShema");
+const _class =require("../model/class");
 getAllchilds = (req, res, next) => {
   Child.find({}) //returns a promise
     .then((child) => {
@@ -70,6 +71,8 @@ updateChild = (req, res, next) => {
       next(error);
     });
 };
+
+
 exports = module.exports = {
   getAllchilds,
   getonechild,

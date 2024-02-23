@@ -6,12 +6,12 @@ router
   .route("/teacher")
   .get(controller.getAllteachers)
   .post(controller.addteacher);
+router.route("/teacher/superviosr").get(controller.getAllClasses);
 router
   .route("/teacher/:id")
   .get(controller.getoneteacher)
   .patch(controller.addteacher)
   .post(controller.updateteacher)
   .delete(controller.deleteteacher);
-  
-router.route("/teacher/superviosr")
+
 module.exports = router;

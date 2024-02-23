@@ -1,4 +1,5 @@
 const Teacher = require("../model/Teacher"); // Make sure the path is correct
+const _class = require("../model/class");
 
 getAllteachers = (req, res, next) => {
   Teacher.find({})
@@ -68,11 +69,23 @@ updateteacher = (req, res, next) => {
         next(error);
       });
   };
-    
+ const getAllClasses = (req, res, next) => {
+   _class
+     .find({})
+     .populate("supervisor") // Assuming you want to include detailed info about each class's supervisor
+     .populate("children") // Optionally populate the children array if you have a reference to children in your class model
+     .then((classes) => {
+       res.status(200).json(classes);
+     })
+     .catch((error) => {
+       next(error); // Pass any errors to Express's error handling middleware
+     });
+ };
 module.exports = {
   getAllteachers,
   getoneteacher,
   addteacher,
   deleteteacher,
   updateteacher,
+  getAllClasses,
 };
