@@ -54,33 +54,33 @@ addteacher = (req, res, next) => {
     });
 };
 updateteacher = (req, res, next) => {
-    const id = req.params.id;
-    const update = req.body;
-    Teacher.findByIdAndUpdate(id, update, { new: true })
-      .then((teacher) => {
-        if (!teacher) {
-            return res.status(404).json({ message: "Teacher not found." });
-          } else if (!("name" in update)) {
-            return res.status(400).json({ message: "Missing field: 'name'" });
-          }
-          res.status(200).json(teacher);
-      })
-      .catch((error) => {
-        next(error);
-      });
-  };
- const getAllClasses = (req, res, next) => {
-   _class
-     .find({})
-     .populate("supervisor") // Assuming you want to include detailed info about each class's supervisor
-     .populate("children") // Optionally populate the children array if you have a reference to children in your class model
-     .then((classes) => {
-       res.status(200).json(classes);
-     })
-     .catch((error) => {
-       next(error); // Pass any errors to Express's error handling middleware
-     });
- };
+  const id = req.params.id;
+  const update = req.body;
+  Teacher.findByIdAndUpdate(id, update, { new: true })
+    .then((teacher) => {
+      if (!teacher) {
+        return res.status(404).json({ message: "Teacher not found." });
+      } else if (!("name" in update)) {
+        return res.status(400).json({ message: "Missing field: 'name'" });
+      }
+      res.status(200).json(teacher);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+const getAllClasses = (req, res, next) => {
+  _class
+    .find({})
+    .populate("_class")
+    .populate("children")
+    .then((classes) => {
+      res.status(200).json(classes);
+    })
+    .catch((error) => {
+      next(error); // Pass any errors to Express's error handling middleware
+    });
+};
 module.exports = {
   getAllteachers,
   getoneteacher,
