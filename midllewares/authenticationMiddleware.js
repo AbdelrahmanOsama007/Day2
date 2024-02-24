@@ -6,6 +6,7 @@ function generateToken(teacher) {
   return jwt.sign({ id: teacher.id }, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
+  
 }
 
 // Middleware to verify a token and protect routes

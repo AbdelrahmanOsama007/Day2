@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controller/teacherController");
+const validator = require("../validator/valdatior")
+const insertValidations =require("../validator/teachervaldation")
 
 router
   .route("/teacher")
