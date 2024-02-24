@@ -1,7 +1,6 @@
 //const teacher =require('./Teacher');
 const mongoose=require( 'mongoose' );
-var Schema = mongoose.Schema; 
-// Create a schema for the user object
+var Schema = mongoose.Schema;
 const classSchema = new mongoose.Schema({
   _id: {
     type: Number,

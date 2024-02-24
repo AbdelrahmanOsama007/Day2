@@ -74,7 +74,7 @@ const getAllClasses = async (req, res, next) => {
   try {
     const classes = await _class
       .find({})
-      .populate("supervisor")
+      .populate("teacher")
       .populate("children");
     res.status(200).json(classes);
   } catch (error) {
