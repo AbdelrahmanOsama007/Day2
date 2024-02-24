@@ -8,6 +8,10 @@ const teacherSchema = new Schema(
       type: String,
       required: true,
     },
+    password: {
+      type: String,
+      required: true,
+    },
     subject: {
       type: String,
       required: true,

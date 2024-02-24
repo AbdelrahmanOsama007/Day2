@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
-const myPlaintextPassword = "s0//P4$$w0rD";
-const someOtherPlaintextPassword = "not_bacon";
+// const bcrypt = require("bcrypt");
+// const saltRounds = 10;
+// const myPlaintextPassword = "s0//P4$$w0rD";
+// const someOtherPlaintextPassword = "not_bacon";
 //const autoIncrement = require("mongoose-auto-increment");
 const Schema = mongoose.Schema;
 // Define the Address sub-schema
@@ -10,6 +10,10 @@ const addressSchema = new Schema({
   city: {
     type: String,
     required: true,
+  },
+  password:{
+    type:String,
+    default:""
   },
   street: {
     type: String,
