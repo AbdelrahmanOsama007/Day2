@@ -5,6 +5,7 @@ const cors = require("cors");
 const teachersroute = require("./route/TeacherRoute");
 const childsroute = require("./route/childroute");
 const classroute = require("./route/classrout");
+const upload =require("./midllewares/img");
 const connectdbdb = require("./model/db");
 require("dotenv").config
 const app = express();
@@ -40,6 +41,9 @@ app.use((req, res, next) => {
 app.use(teachersroute);
 app.use(childsroute);
 app.use(classroute);
+app.post("/upload", upload.single("image"), (req, res, next) => {
+  res.json({ message: "uplaoded" });
+});
 // app.use("route/route.js", (req, res) => {
 //   res.json({ message: "Hello World!" });
 // });

@@ -7,6 +7,8 @@ router
   .get(controller.getAllteachers)
   .post(controller.addteacher);
 router.route("/teacher/superviosr").get(controller.getAllClasses);
+// get teacher by id
+router.route("/teacher/login").post();
 router
   .route("/teacher/:id")
   .get(controller.getoneteacher)

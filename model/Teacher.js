@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+
 // Define the Teacher schema
 const teacherSchema = new Schema(
   {
@@ -24,6 +25,9 @@ const teacherSchema = new Schema(
     yearsOfExperience: {
       type: Number,
       required: false, // This field is not required
+    },
+    image:{
+      type : String,
     },
   },
   { timestamps: true }
