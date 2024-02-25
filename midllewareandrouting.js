@@ -7,6 +7,8 @@ const childsroute = require("./route/childroute");
 const classroute = require("./route/classrout");
 const upload =require("./midllewares/img");
 const connectdbdb = require("./model/db");
+const authRoute = require("./route/authroute");
+
 require("dotenv").config
 const app = express();
 const port = process.env.PORT||3000;
@@ -38,6 +40,7 @@ app.use((req, res, next) => {
 });
 
 // Routing for GET request to root
+app.use(authRoute);
 app.use(teachersroute);
 app.use(childsroute);
 app.use(classroute);
