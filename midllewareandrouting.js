@@ -5,25 +5,25 @@ const cors = require("cors");
 const teachersroute = require("./route/TeacherRoute");
 const childsroute = require("./route/childroute");
 const classroute = require("./route/classrout");
-const upload =require("./midllewares/img");
+const upload = require("./midllewares/img");
 const connectdbdb = require("./model/db");
+const { verifyToken } = require("./midllewares/authenticationMiddleware");
 const authRoute = require("./route/authroute");
+const swagger = require("./swagger");
 
-require("dotenv").config
+require("dotenv").config();
 const app = express();
-const port = process.env.PORT||3000;
-
+const port = process.env.PORT || 3000;
 
 // Use Morgan middleware with the 'combined' format
-try{
-require("dotenv").config();
-}catch(err){console.log('No .env file')};
-
 app.use(morgan("combine"));
+// parse application/json
 app.use(express.json());
+// cors for cross origin request
 app.use(cors());
 connectdbdb(process.env.url); // Connect to MongoDB database using Mongoose
 
+swagger(app, port);
 // Define routes
 
 // Middleware to log authorization status
@@ -40,7 +40,9 @@ app.use((req, res, next) => {
 });
 
 // Routing for GET request to root
+
 app.use(authRoute);
+app.use(verifyToken);
 app.use(teachersroute);
 app.use(childsroute);
 app.use(classroute);
