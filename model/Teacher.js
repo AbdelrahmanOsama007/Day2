@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-
 // Define the Teacher schema
 const teacherSchema = new Schema(
   {
@@ -32,6 +30,7 @@ const teacherSchema = new Schema(
   },
   { timestamps: true }
 );
+//UserSchema.plugin(AutoIncrement, { inc_field: "id" });
 
 // Create the model from the schema
 const Teacher = mongoose.model("Teacher", teacherSchema);

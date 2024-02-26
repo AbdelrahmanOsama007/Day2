@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const Teacher = require("../model/Teacher"); // Adjust the path as necessary
 const bcrypt = require("bcrypt");
 
-const secretKey = process.env.SECRET_KEY; // Use a more descriptive variable name
+const secretKey = process.env.JWT_SECRET; // Use a more descriptive variable name
 
 exports.hashedLogin = (req, res, next) => {
   const { email, password } = req.body; // Destructure for cleaner access

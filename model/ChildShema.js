@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
-// const bcrypt = require("bcrypt");
-// const saltRounds = 10;
-// const myPlaintextPassword = "s0//P4$$w0rD";
-// const someOtherPlaintextPassword = "not_bacon";
-//const autoIncrement = require("mongoose-auto-increment");
+
 const Schema = mongoose.Schema;
 // Define the Address sub-schema
 const addressSchema = new Schema({
@@ -11,9 +7,9 @@ const addressSchema = new Schema({
     type: String,
     required: true,
   },
-  password:{
-    type:String,
-    default:""
+  password: {
+    type: String,
+    default: "",
   },
   street: {
     type: String,
@@ -55,15 +51,6 @@ const childSchema = new Schema(
   },
   { timestamps: true }
 );
-
-// childSchema.plugin(autoIncrement, {
-//   field: "id",
-//   groupBy: "fullName",
-//   digits: 1,
-//   startAt: 1,
-//   incrementBy: 1,
-//   unique: true,
-// });
 
 // Create the model from the schema
 const Child = mongoose.model("Child", childSchema);

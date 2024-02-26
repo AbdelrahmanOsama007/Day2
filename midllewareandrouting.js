@@ -10,7 +10,8 @@ const connectdbdb = require("./model/db");
 const { verifyToken } = require("./midllewares/authenticationMiddleware");
 const authRoute = require("./route/authroute");
 const swagger = require("./swagger");
-
+// const AutoIncrement = require("mongoose-sequence")(mongoose);
+//const AutoIncrementFactory = require("mongoose-sequence");
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.use(express.json());
 // cors for cross origin request
 app.use(cors());
 connectdbdb(process.env.url); // Connect to MongoDB database using Mongoose
+//AutoIncrement = AutoIncrementFactory(connectdbdb);
 
 swagger(app, port);
 // Define routes

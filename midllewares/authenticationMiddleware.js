@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 // Function to generate a JWT token for a teacher
 function generateToken(teacher) {
-  console.log("JWT_SECRET :>> ", JWT_SECRET);
   return jwt.sign({ id: teacher.id }, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
